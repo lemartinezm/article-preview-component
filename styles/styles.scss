@@ -20,19 +20,21 @@ body {
   align-items: center;
   margin: 0;
   background-color: $lightGrayishBlue;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 main {
   display: flex;
-  padding: 0 24px;
+  padding: 24px;
   box-sizing: border-box;
 
   article {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0px 10px 20px -18px $grayishBlue;
+    box-shadow: 5px 10px 20px -16px $grayishBlue;
 
     picture {
       display: flex;
@@ -88,7 +90,7 @@ main {
               font-weight: 700;
               color: $veryDarkGrayishBlue;
             }
-            
+
             &:nth-child(2) {
               color: $grayishBlue;
             }
@@ -121,6 +123,71 @@ main {
             height: 13px;
           }
 
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  main {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 0;
+
+    article {
+      flex-direction: row;
+      box-sizing: border-box;
+
+      picture {
+        img {
+          object-fit: cover;
+        }
+      }
+
+      #container {
+        box-sizing: border-box;
+
+        h1 {
+          font-size: 20px;
+        }
+
+        #share-container #icon-container {
+          position: relative;
+
+          #social-icons {
+            position: fixed;
+            transform: translateY(-64px);
+            background-color: hsl(217, 19%, 35%);
+            padding: 16px 32px;
+            z-index: 5;
+            border-radius: 8px
+          }
+
+          #social-icons::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0; 
+            height: 0; 
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid hsl(217, 19%, 35%);
+            transform: translateY(10px);
+          }
         }
       }
     }
