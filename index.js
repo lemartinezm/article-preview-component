@@ -4,32 +4,50 @@ function shareContentMobile() {
   document.getElementById('avatar').style.display = 'none';
   document.getElementById('user-date').style.display = 'none';
   document.getElementById('social-icons').style.display = 'flex'
-  document.querySelector('#icon-container svg path').style.fill = 'white';
-  document.querySelector('#icon-container').style.backgroundColor = '#6E8098';
+  document.querySelector('#share-button svg path').style.fill = 'white';
+  document.querySelector('#share-button').style.backgroundColor = '#6E8098';
 }
+
+// For animations
+let interval;
 
 function shareContentDesktop() {
   document.getElementById('social-icons').style = 'display: flex';
-  document.querySelector('#icon-container svg path').style.fill = 'white';
-  document.querySelector('#icon-container').style.backgroundColor = '#6E8098';
+  clearInterval(interval);
+  interval = setInterval(() => {
+    document.getElementById('social-icons').style = 'display: flex; opacity: 100%';
+  }, 5);
+  document.querySelector('#share-button svg path').style.fill = 'white';
+  document.querySelector('#share-button').style.backgroundColor = '#6E8098';
+}
+
+function closeShareBox() {
+  clearInterval(interval);
+  interval = setInterval(() => {
+    document.getElementById('social-icons').style = 'display: flex; opacity: 0';
+  }, 5)
+  document.getElementById('social-icons').removeAttribute('style');
+  document.querySelector('#share-button svg path').removeAttribute('style');
+  document.querySelector('#share-button').removeAttribute('style');
 }
 
 // * Media Query
 const mediaMobile = window.matchMedia('(max-width: 767px)');
 
-function handleChange(mediaQuery) {
-  const iconsContainer = document.getElementById('icon-container');
+function handleChange(isMobile) {
+  const iconsContainer = document.getElementById('share-button');
   const socialContainer = document.getElementById('social-icons');
-  if (mediaQuery.matches) {
+  if (isMobile) {
     document.getElementById('user-date').after(socialContainer);
     iconsContainer.addEventListener('click', shareContentMobile);
   } else {
     iconsContainer.removeEventListener('click', shareContentMobile);
     iconsContainer.addEventListener('click', shareContentDesktop);
+    iconsContainer.addEventListener('blur', closeShareBox);
     iconsContainer.appendChild(document.getElementById('social-icons'));
   }
 }
 
-handleChange(mediaMobile);
+handleChange(mediaMobile.matches);
 
-mediaMobile.addEventListener('change', handleChange)
+mediaMobile.addEventListener('change', handleChange);

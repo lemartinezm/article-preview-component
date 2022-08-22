@@ -109,7 +109,8 @@ main {
           }
         }
 
-        #icon-container {
+        #share-button {
+          border: none;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -162,16 +163,24 @@ main {
           font-size: 20px;
         }
 
-        #share-container #icon-container {
+        #share-container #share-button {
           position: relative;
+          cursor: pointer;
 
           #social-icons {
+            opacity: 0%;
+            transition: opacity 0.3s linear;
+            cursor: default;
             position: fixed;
             transform: translateY(-64px);
             background-color: hsl(217, 19%, 35%);
             padding: 16px 32px;
             z-index: 5;
-            border-radius: 8px
+            border-radius: 8px;
+
+            img {
+              cursor: pointer;
+            }
           }
 
           #social-icons::after {

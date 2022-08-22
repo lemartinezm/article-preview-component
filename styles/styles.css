@@ -126,7 +126,8 @@ main article #container #share-container #social-icons p {
   color: hsl(212deg, 23%, 69%);
   letter-spacing: 4px;
 }
-main article #container #share-container #icon-container {
+main article #container #share-container #share-button {
+  border: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -141,7 +142,7 @@ main article #container #share-container #icon-container {
   height: 32px;
   border-radius: 50%;
 }
-main article #container #share-container #icon-container img {
+main article #container #share-container #share-button img {
   width: 15px;
   height: 13px;
 }
@@ -179,10 +180,15 @@ main article #container #share-container #icon-container img {
   main article #container h1 {
     font-size: 20px;
   }
-  main article #container #share-container #icon-container {
+  main article #container #share-container #share-button {
     position: relative;
+    cursor: pointer;
   }
-  main article #container #share-container #icon-container #social-icons {
+  main article #container #share-container #share-button #social-icons {
+    opacity: 0%;
+    -webkit-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+    cursor: default;
     position: fixed;
     -webkit-transform: translateY(-64px);
             transform: translateY(-64px);
@@ -191,7 +197,10 @@ main article #container #share-container #icon-container img {
     z-index: 5;
     border-radius: 8px;
   }
-  main article #container #share-container #icon-container #social-icons::after {
+  main article #container #share-container #share-button #social-icons img {
+    cursor: pointer;
+  }
+  main article #container #share-container #share-button #social-icons::after {
     content: "";
     position: absolute;
     bottom: 0;
