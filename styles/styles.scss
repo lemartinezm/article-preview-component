@@ -97,7 +97,7 @@ main {
           }
         }
 
-        #social-icons {
+        #social-container {
           display: none;
           justify-content: space-between;
           align-items: center;
@@ -167,8 +167,8 @@ main {
           position: relative;
           cursor: pointer;
 
-          #social-icons {
-            opacity: 0%;
+          #social-container {
+            opacity: 0;
             transition: opacity 0.3s linear;
             cursor: default;
             position: fixed;
@@ -183,7 +183,12 @@ main {
             }
           }
 
-          #social-icons::after {
+          #social-container.active {
+            opacity: 1;
+            transition: opacity 0.3s linear;
+          }
+
+          #social-container::after {
             content: '';
             position: absolute;
             bottom: 0;

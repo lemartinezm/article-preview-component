@@ -112,7 +112,7 @@ main article #container #share-container #user-date > p:nth-child(1) {
 main article #container #share-container #user-date > p:nth-child(2) {
   color: hsl(212deg, 23%, 69%);
 }
-main article #container #share-container #social-icons {
+main article #container #share-container #social-container {
   display: none;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -122,7 +122,7 @@ main article #container #share-container #social-icons {
           align-items: center;
   gap: 16px;
 }
-main article #container #share-container #social-icons p {
+main article #container #share-container #social-container p {
   color: hsl(212deg, 23%, 69%);
   letter-spacing: 4px;
 }
@@ -184,8 +184,8 @@ main article #container #share-container #share-button img {
     position: relative;
     cursor: pointer;
   }
-  main article #container #share-container #share-button #social-icons {
-    opacity: 0%;
+  main article #container #share-container #share-button #social-container {
+    opacity: 0;
     -webkit-transition: opacity 0.3s linear;
     transition: opacity 0.3s linear;
     cursor: default;
@@ -197,10 +197,15 @@ main article #container #share-container #share-button img {
     z-index: 5;
     border-radius: 8px;
   }
-  main article #container #share-container #share-button #social-icons img {
+  main article #container #share-container #share-button #social-container img {
     cursor: pointer;
   }
-  main article #container #share-container #share-button #social-icons::after {
+  main article #container #share-container #share-button #social-container.active {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+  }
+  main article #container #share-container #share-button #social-container::after {
     content: "";
     position: absolute;
     bottom: 0;
